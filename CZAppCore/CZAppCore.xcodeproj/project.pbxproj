@@ -1,0 +1,318 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		841635431F5F654600C47136 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 841635421F5F654600C47136 /* main.cpp */; };
+		8416354B1F5F65B600C47136 /* CZAppCoreIniFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 841635491F5F65B600C47136 /* CZAppCoreIniFile.cpp */; };
+		8416354E1F5F662200C47136 /* CZAppCoreDataFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8416354C1F5F662200C47136 /* CZAppCoreDataFile.cpp */; };
+		841635511F5F669900C47136 /* CZAppCoreStorage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8416354F1F5F669900C47136 /* CZAppCoreStorage.cpp */; };
+		8416355A1F5F686E00C47136 /* CZAppCoreRAM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 841635581F5F686E00C47136 /* CZAppCoreRAM.cpp */; };
+		8416355D1F5F68A300C47136 /* CZAppCoreDisk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8416355B1F5F68A300C47136 /* CZAppCoreDisk.cpp */; };
+		841635601F5F690600C47136 /* CZAppCoreArgs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8416355E1F5F690600C47136 /* CZAppCoreArgs.cpp */; };
+		841635631F5F6A2E00C47136 /* CZAppCoreHybridRAMDiskServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 841635611F5F6A2E00C47136 /* CZAppCoreHybridRAMDiskServer.cpp */; };
+		841635661F5F6ACF00C47136 /* CZAppCoreServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 841635641F5F6ACF00C47136 /* CZAppCoreServer.cpp */; };
+		841635691F5F6B1C00C47136 /* CZAppCoreHostProfile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 841635671F5F6B1C00C47136 /* CZAppCoreHostProfile.cpp */; };
+		8416356F1F5F73FE00C47136 /* CZAppCoreProcess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8416356D1F5F73FE00C47136 /* CZAppCoreProcess.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8416353D1F5F654600C47136 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		8416353F1F5F654600C47136 /* CZAppCore */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CZAppCore; sourceTree = BUILT_PRODUCTS_DIR; };
+		841635421F5F654600C47136 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		841635491F5F65B600C47136 /* CZAppCoreIniFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CZAppCoreIniFile.cpp; sourceTree = "<group>"; };
+		8416354A1F5F65B600C47136 /* CZAppCoreIniFile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CZAppCoreIniFile.hpp; sourceTree = "<group>"; };
+		8416354C1F5F662200C47136 /* CZAppCoreDataFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CZAppCoreDataFile.cpp; sourceTree = "<group>"; };
+		8416354D1F5F662200C47136 /* CZAppCoreDataFile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CZAppCoreDataFile.hpp; sourceTree = "<group>"; };
+		8416354F1F5F669900C47136 /* CZAppCoreStorage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CZAppCoreStorage.cpp; sourceTree = "<group>"; };
+		841635501F5F669900C47136 /* CZAppCoreStorage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CZAppCoreStorage.hpp; sourceTree = "<group>"; };
+		841635581F5F686E00C47136 /* CZAppCoreRAM.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CZAppCoreRAM.cpp; sourceTree = "<group>"; };
+		841635591F5F686E00C47136 /* CZAppCoreRAM.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CZAppCoreRAM.hpp; sourceTree = "<group>"; };
+		8416355B1F5F68A300C47136 /* CZAppCoreDisk.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CZAppCoreDisk.cpp; sourceTree = "<group>"; };
+		8416355C1F5F68A300C47136 /* CZAppCoreDisk.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CZAppCoreDisk.hpp; sourceTree = "<group>"; };
+		8416355E1F5F690600C47136 /* CZAppCoreArgs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CZAppCoreArgs.cpp; sourceTree = "<group>"; };
+		8416355F1F5F690600C47136 /* CZAppCoreArgs.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CZAppCoreArgs.hpp; sourceTree = "<group>"; };
+		841635611F5F6A2E00C47136 /* CZAppCoreHybridRAMDiskServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CZAppCoreHybridRAMDiskServer.cpp; sourceTree = "<group>"; };
+		841635621F5F6A2E00C47136 /* CZAppCoreHybridRAMDiskServer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CZAppCoreHybridRAMDiskServer.hpp; sourceTree = "<group>"; };
+		841635641F5F6ACF00C47136 /* CZAppCoreServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CZAppCoreServer.cpp; sourceTree = "<group>"; };
+		841635651F5F6ACF00C47136 /* CZAppCoreServer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CZAppCoreServer.hpp; sourceTree = "<group>"; };
+		841635671F5F6B1C00C47136 /* CZAppCoreHostProfile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CZAppCoreHostProfile.cpp; sourceTree = "<group>"; };
+		841635681F5F6B1C00C47136 /* CZAppCoreHostProfile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CZAppCoreHostProfile.hpp; sourceTree = "<group>"; };
+		8416356D1F5F73FE00C47136 /* CZAppCoreProcess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CZAppCoreProcess.cpp; sourceTree = "<group>"; };
+		8416356E1F5F73FE00C47136 /* CZAppCoreProcess.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CZAppCoreProcess.hpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8416353C1F5F654600C47136 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		841635361F5F654600C47136 = {
+			isa = PBXGroup;
+			children = (
+				841635411F5F654600C47136 /* CZAppCore */,
+				841635401F5F654600C47136 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		841635401F5F654600C47136 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8416353F1F5F654600C47136 /* CZAppCore */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		841635411F5F654600C47136 /* CZAppCore */ = {
+			isa = PBXGroup;
+			children = (
+				841635421F5F654600C47136 /* main.cpp */,
+				8416354C1F5F662200C47136 /* CZAppCoreDataFile.cpp */,
+				8416354D1F5F662200C47136 /* CZAppCoreDataFile.hpp */,
+				8416354F1F5F669900C47136 /* CZAppCoreStorage.cpp */,
+				841635501F5F669900C47136 /* CZAppCoreStorage.hpp */,
+				841635491F5F65B600C47136 /* CZAppCoreIniFile.cpp */,
+				8416354A1F5F65B600C47136 /* CZAppCoreIniFile.hpp */,
+				841635581F5F686E00C47136 /* CZAppCoreRAM.cpp */,
+				841635591F5F686E00C47136 /* CZAppCoreRAM.hpp */,
+				8416355B1F5F68A300C47136 /* CZAppCoreDisk.cpp */,
+				8416355C1F5F68A300C47136 /* CZAppCoreDisk.hpp */,
+				8416355E1F5F690600C47136 /* CZAppCoreArgs.cpp */,
+				8416355F1F5F690600C47136 /* CZAppCoreArgs.hpp */,
+				841635611F5F6A2E00C47136 /* CZAppCoreHybridRAMDiskServer.cpp */,
+				841635621F5F6A2E00C47136 /* CZAppCoreHybridRAMDiskServer.hpp */,
+				841635641F5F6ACF00C47136 /* CZAppCoreServer.cpp */,
+				841635651F5F6ACF00C47136 /* CZAppCoreServer.hpp */,
+				841635671F5F6B1C00C47136 /* CZAppCoreHostProfile.cpp */,
+				841635681F5F6B1C00C47136 /* CZAppCoreHostProfile.hpp */,
+				8416356D1F5F73FE00C47136 /* CZAppCoreProcess.cpp */,
+				8416356E1F5F73FE00C47136 /* CZAppCoreProcess.hpp */,
+			);
+			path = CZAppCore;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8416353E1F5F654600C47136 /* CZAppCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 841635461F5F654600C47136 /* Build configuration list for PBXNativeTarget "CZAppCore" */;
+			buildPhases = (
+				8416353B1F5F654600C47136 /* Sources */,
+				8416353C1F5F654600C47136 /* Frameworks */,
+				8416353D1F5F654600C47136 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CZAppCore;
+			productName = CZAppCore;
+			productReference = 8416353F1F5F654600C47136 /* CZAppCore */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		841635371F5F654600C47136 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Charles Zillmann";
+				TargetAttributes = {
+					8416353E1F5F654600C47136 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 747YJG2G7Z;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 8416353A1F5F654600C47136 /* Build configuration list for PBXProject "CZAppCore" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 841635361F5F654600C47136;
+			productRefGroup = 841635401F5F654600C47136 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8416353E1F5F654600C47136 /* CZAppCore */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8416353B1F5F654600C47136 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				841635631F5F6A2E00C47136 /* CZAppCoreHybridRAMDiskServer.cpp in Sources */,
+				8416355D1F5F68A300C47136 /* CZAppCoreDisk.cpp in Sources */,
+				8416354B1F5F65B600C47136 /* CZAppCoreIniFile.cpp in Sources */,
+				8416356F1F5F73FE00C47136 /* CZAppCoreProcess.cpp in Sources */,
+				841635511F5F669900C47136 /* CZAppCoreStorage.cpp in Sources */,
+				8416354E1F5F662200C47136 /* CZAppCoreDataFile.cpp in Sources */,
+				841635691F5F6B1C00C47136 /* CZAppCoreHostProfile.cpp in Sources */,
+				841635601F5F690600C47136 /* CZAppCoreArgs.cpp in Sources */,
+				841635431F5F654600C47136 /* main.cpp in Sources */,
+				8416355A1F5F686E00C47136 /* CZAppCoreRAM.cpp in Sources */,
+				841635661F5F6ACF00C47136 /* CZAppCoreServer.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		841635441F5F654600C47136 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		841635451F5F654600C47136 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		841635471F5F654600C47136 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 747YJG2G7Z;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		841635481F5F654600C47136 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 747YJG2G7Z;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8416353A1F5F654600C47136 /* Build configuration list for PBXProject "CZAppCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				841635441F5F654600C47136 /* Debug */,
+				841635451F5F654600C47136 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		841635461F5F654600C47136 /* Build configuration list for PBXNativeTarget "CZAppCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				841635471F5F654600C47136 /* Debug */,
+				841635481F5F654600C47136 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 841635371F5F654600C47136 /* Project object */;
+}
