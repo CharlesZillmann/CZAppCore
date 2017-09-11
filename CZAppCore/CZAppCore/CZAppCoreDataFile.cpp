@@ -12,6 +12,7 @@
 #include<stdio.h>
 #include<string>
 #include<math.h>
+#include <python2.7/Python.h>
 
 #include "CZAppCoreDataFile.hpp"
 
@@ -27,7 +28,7 @@ long int DataFile :: get_file_length()
     return len;
 }
 
-int DataFile :: get_startpos()
+long DataFile :: get_startpos()
 {
     return startpos;
 }
@@ -54,6 +55,15 @@ int DataFileSys::CLmain(int argc, char* argv[])    //Enter command line argument
         cout << "4. Search for a keyword in a file\n";
         cout << "5. Create new file\n";
         cout << "6. Delete a file\n";
+        cout << "7. Pull a file from the Network\n";
+        cout << "8. Push a file to the Network\n";
+        cout << "9. Monitor Network for file pull requests\n";
+        cout << "10. Launch a Python script to process data\n";
+        cout << "11. Launch a Program to process data";
+        cout << "12. Mount a Container Data Volume";
+        cout << "13. Unmount a Container Data Volume";
+        
+        
         cin >> choice;
         switch(choice)
         {
@@ -250,7 +260,7 @@ void DataFileSys::delete_file(char* f_name)
     {
         if(!strcmp(files[i].get_file_name(), f_name))
         {
-            int del_len;
+            long del_len;
             strcpy(files[i].name, "\0");
             del_len = files[i].get_file_length() ;
             files[i].len = 0;
@@ -347,7 +357,7 @@ void DataFileSys::write_to_file()
     
 }
 
-bool senddata(SOCKET sock, void *buf, int buflen)
+bool DataFileSys::senddata(SOCKET sock, void *buf, int buflen)
 {
     unsigned char *pbuf = (unsigned char *) buf;
     
@@ -371,13 +381,13 @@ bool senddata(SOCKET sock, void *buf, int buflen)
     return true;
 }
 
-bool sendlong(SOCKET sock, long value)
+bool DataFileSys::sendlong(SOCKET sock, long value)
 {
     value = htonl(value);
     return senddata(sock, &value, sizeof(value));
 }
 
-bool sendfile(SOCKET sock, FILE *f)
+bool DataFileSys::sendfilenetwork(SOCKET sock, FILE *f)
 {
     fseek(f, 0, SEEK_END);
     long filesize = ftell(f);
@@ -405,7 +415,7 @@ bool sendfile(SOCKET sock, FILE *f)
 }
 
 //Client
-bool readdata(SOCKET sock, void *buf, int buflen)
+bool DataFileSys::readdatasocket(SOCKET sock, void *buf, int buflen)
 {
     unsigned char *pbuf = (unsigned char *) buf;
     
@@ -431,7 +441,7 @@ bool readdata(SOCKET sock, void *buf, int buflen)
     return true;
 }
 
-bool readlong(SOCKET sock, long *value)
+bool DataFileSys::readlongsocket(SOCKET sock, long *value)
 {
     if (!readdata(sock, value, sizeof(value)))
         return false;
@@ -439,7 +449,7 @@ bool readlong(SOCKET sock, long *value)
     return true;
 }
 
-bool readfile(SOCKET sock, FILE *f)
+bool DataFileSys::readfilenetwork(SOCKET sock, FILE *f)
 {
     long filesize;
     if (!readlong(sock, &filesize))
@@ -471,7 +481,7 @@ bool readfile(SOCKET sock, FILE *f)
 #define PORT 20000
 #define LENGTH 512
 
-int main(int argc, char *argv[]){
+int DataFileSys::main(int argc, char *argv[]){
     int sockfd;
     int nsockfd;
     char revbuf[LENGTH];
@@ -665,3 +675,46 @@ int n = 0;
 n = read(nsockfd, buffer, 255);
 if (n < 0) error("ERROR reading from socket");
 printf("msg: %s\n",buffer);
+
+////Launch Python script from C++
+//#include <python2.7/Python.h>
+//int main(){
+//    Py_SetProgramName("myPythonProgram");
+//    Py_Initialize();
+//    // parDict is a parameter to send to python function
+//    PyObject * parDict;
+//    parDict = PyDict_New();
+//    PyDict_SetItemString(parDict, "x0", PyFloat_FromDouble(1.0));
+//    // run python code to load functions
+//    PyRun_SimpleString("exec(open('cpptest.py').read())");
+//    // get function showval from __main__
+//    PyObject* main_module = PyImport_AddModule("__main__");
+//    PyObject* global_dict = PyModule_GetDict(main_module);
+//    PyObject* func = PyDict_GetItemString(global_dict, "showval");
+//    // parameter should be a tuple
+//    PyObject* par = PyTuple_Pack(1, parDict);
+//    // call the function
+//    PyObject_CallObject(func, par);
+//    Py_Finalize();
+//}
+//
+//Function defined in cpptest.py is:
+//
+//1
+//2
+//3
+//4
+//5
+//import numpy as np
+//def showval(par):
+//print "in function showval"
+//print par
+//print np.array([1, 2, 3])
+//we get the result:
+//
+//1
+//2
+//3
+//in function showval
+//{'x0': 1.0}
+//[1 2 3]

@@ -18,11 +18,11 @@ class DataFile{
 public:
     char name[64];
     long int len;
-    int startpos;
+    long startpos;
     
     char* get_file_name();
     long int get_file_length();
-    int get_startpos();
+    long get_startpos();
 };
 
 #endif // fi
