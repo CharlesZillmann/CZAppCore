@@ -6,10 +6,6 @@
 //  Copyright © 2017 Charles Zillmann. All rights reserved.
 //
 
-#include "CZAppCoreDataFile.hpp"
-
-//Test commit 10 11 11 11
-#include "filesys.h"
 #include<iostream>
 #include<fstream>
 #include<string.h>
@@ -17,8 +13,100 @@
 #include<string>
 #include<math.h>
 
+#include "CZAppCoreDataFile.hpp"
+
+//Test commit 10 11 11 11
+
+
+char* DataFile :: get_file_name()
+{
+    return name;
+}
+long int DataFile :: get_file_length()
+{
+    return len;
+}
+
+int DataFile :: get_startpos()
+{
+    return startpos;
+}
+
 using namespace std;
-void filesys::set_file_system_name()
+using namespace std;
+
+int DataFileSys::CLmain(int argc, char* argv[])    //Enter command line arguments to open a previously created file system
+// or leave blank to create a new one.
+{
+    char name[80], content[200], name1[80], keyword[60], *c = NULL;
+    cout<< "-----------------------------------------------------------------------------\n";
+    cout<< "************************ Virtual File System *********************************\n";
+    cout<< "-----------------------------------------------------------------------------\n";
+    int choice;
+    DataFileSys f1(argv[1]);
+    
+    while(1)
+    {
+        cout << "\nEnter your choice:\n";
+        cout << "1. List files in the file system\n";
+        cout << "2. Show file content\n";
+        cout << "3. Search a file\n";
+        cout << "4. Search for a keyword in a file\n";
+        cout << "5. Create new file\n";
+        cout << "6. Delete a file\n";
+        cin >> choice;
+        switch(choice)
+        {
+            case 1:
+                f1.list_files();
+                break;
+            case 2:
+                cout << "Enter file name\n";
+                cin >> name;
+                c = f1.show_file_content(name);
+                if(c != NULL)
+                    cout << c;
+                break;
+            case 3:
+                cout << "Enter file name\n";
+                cin >> name;
+                c = f1.search_file(name);
+                if(c != NULL)
+                    cout << c;
+                break;
+            case 4:
+                cout << "Enter the file name\n";
+                cin >> name;
+                cout << "Enter the keyword to be searched\n";
+                cin >> keyword;
+                f1.search_keyword(name, keyword);
+                break;
+            case 5:
+                cout << "Enter the name of new file\n";
+                cin >> name;
+                cout << "Enter the content of the file\n";
+                cin.clear();
+                fflush(stdin);
+                cin.getline(content, sizeof(content));
+                f1.create_file(name, content);
+                break;
+            case 6:
+                cout << "Enter the name of the file to be deleted\n";
+                cin >> name;
+                f1.delete_file(name);
+                break;
+            default:
+                cout << "Enter a valid option!\n";
+        }
+        cout << "\nEnter 0 to exit; 1 to continue\n";
+        cin >> choice;
+        if(!choice)
+            break;
+    }
+    return 0;
+}
+
+void DataFileSys::set_file_system_name()
 {       cout << "Enter file system name\n";
     char temp[80];
     cin >> temp;
@@ -26,7 +114,7 @@ void filesys::set_file_system_name()
     initialize();
 }
 
-filesys::filesys(char f_name[])
+DataFileSys::DataFileSys(char f_name[])
 {
     if(f_name == NULL)
         set_file_system_name();
@@ -37,7 +125,7 @@ filesys::filesys(char f_name[])
         read_from_file();
     }
 }
-void filesys::initialize()
+void DataFileSys::initialize()
 {
     fstream myfile(file_system_name, ios::out);
     int i;
@@ -52,7 +140,7 @@ void filesys::initialize()
     write_to_file();
 }
 
-void filesys::list_files()
+void DataFileSys::list_files()
 {
     for(int i = 0; i < MAX_FILES; i++)
     {
@@ -62,7 +150,7 @@ void filesys::list_files()
     }
 }
 
-char* filesys::show_file_content(char* f_name)
+char* DataFileSys::show_file_content(char* f_name)
 {
     fstream myfile(file_system_name, ios::in);
     int i;
@@ -83,7 +171,7 @@ char* filesys::show_file_content(char* f_name)
     myfile.close();
     return NULL;
 }
-char* filesys::search_file(char* f_name)
+char* DataFileSys::search_file(char* f_name)
 {
     int i;
     for(i = 0; i < MAX_FILES; i++)
@@ -99,7 +187,7 @@ char* filesys::search_file(char* f_name)
     return NULL;
     
 }
-void filesys :: search_keyword(char* f_name, char* keyword)
+void DataFileSys :: search_keyword(char* f_name, char* keyword)
 {
     fstream myfile(file_system_name, ios::in);
     for(int i = 0; i < MAX_FILES; i++)
@@ -116,7 +204,7 @@ void filesys :: search_keyword(char* f_name, char* keyword)
                 myfile.close();
                 return;
             }
-            int pos = p - file_content + 1;      // The difference between the address of substring in the string and
+            long pos = p - file_content + 1;      // The difference between the address of substring in the string and
             // the base address plus 1
             cout<<"\nKeyword Found!\nPosition of keyword:\t"<<pos;
             myfile.close();
@@ -129,10 +217,10 @@ void filesys :: search_keyword(char* f_name, char* keyword)
     return;
 }
 
-void filesys::delete_file(char* f_name)
+void DataFileSys::delete_file(char* f_name)
 {
     int i,j;
-    char* file_content = new char[MAX_FILE_LEN];
+//    char* file_content = new char[MAX_FILE_LEN];
     for(i = 0; i < MAX_FILES; i++)
     {
         if(!strcmp(files[i].get_file_name(), f_name))
@@ -158,7 +246,7 @@ void filesys::delete_file(char* f_name)
 }
 
 
-void filesys::create_file(char* f_name, char* file_contents)
+void DataFileSys::create_file(char* f_name, char* file_contents)
 {
     int i;
     for(i = 0; i < MAX_FILES; i++){
@@ -181,7 +269,7 @@ void filesys::create_file(char* f_name, char* file_contents)
 }
 
 
-void filesys::read_from_file()
+void DataFileSys::read_from_file()
 {
     fstream myfile(file_system_name, ios::in);
     int i;
@@ -204,7 +292,7 @@ void filesys::read_from_file()
     myfile.close();
 }
 
-void filesys::write_to_file()
+void DataFileSys::write_to_file()
 {
     fstream myfile(file_system_name, ios::in);
     fstream newfile("temp.txt", ios::out);

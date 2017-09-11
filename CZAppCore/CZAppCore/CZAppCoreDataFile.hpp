@@ -11,23 +11,38 @@
 
 #include <stdio.h>
 
+#ifndef fi
+#define fi
+
+class DataFile{
+public:
+    char name[64];
+    long int len;
+    int startpos;
+    
+    char* get_file_name();
+    long int get_file_length();
+    int get_startpos();
+};
+
+#endif // fi
+
 #define MAX_FILES 16
 #define MAX_FILE_LEN 1000
 #ifndef fs
 #define fs
-#include "file.h"
 #include<fstream>
 using namespace std;
-class filesys
+class DataFileSys
 {
 public:
-    file files[MAX_FILES];
-    
+    DataFile files[MAX_FILES];
+    int CLmain(int argc, char* argv[]);
     void initialize();
     void read_from_file();
     void write_to_file();
     void set_file_system_name();
-    filesys(char f_name[]);
+    DataFileSys(char f_name[]);
     char file_system_name[20];
     void list_files();
     char* show_file_content(char* f_name);
