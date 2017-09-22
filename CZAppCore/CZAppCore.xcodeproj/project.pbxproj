@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A13B0F31F75D09500A3C0A7 /* CZAppCoreCSVFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A13B0F11F75D09500A3C0A7 /* CZAppCoreCSVFile.cpp */; };
 		841635431F5F654600C47136 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 841635421F5F654600C47136 /* main.cpp */; };
 		8416354B1F5F65B600C47136 /* CZAppCoreIniFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 841635491F5F65B600C47136 /* CZAppCoreIniFile.cpp */; };
 		8416354E1F5F662200C47136 /* CZAppCoreDataFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8416354C1F5F662200C47136 /* CZAppCoreDataFile.cpp */; };
@@ -33,6 +34,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5A13B0F11F75D09500A3C0A7 /* CZAppCoreCSVFile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CZAppCoreCSVFile.cpp; sourceTree = "<group>"; };
+		5A13B0F21F75D09500A3C0A7 /* CZAppCoreCSVFile.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CZAppCoreCSVFile.hpp; sourceTree = "<group>"; };
 		8416353F1F5F654600C47136 /* CZAppCore */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CZAppCore; sourceTree = BUILT_PRODUCTS_DIR; };
 		841635421F5F654600C47136 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		841635491F5F65B600C47136 /* CZAppCoreIniFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CZAppCoreIniFile.cpp; sourceTree = "<group>"; };
@@ -108,6 +111,8 @@
 				841635681F5F6B1C00C47136 /* CZAppCoreHostProfile.hpp */,
 				8416356D1F5F73FE00C47136 /* CZAppCoreProcess.cpp */,
 				8416356E1F5F73FE00C47136 /* CZAppCoreProcess.hpp */,
+				5A13B0F11F75D09500A3C0A7 /* CZAppCoreCSVFile.cpp */,
+				5A13B0F21F75D09500A3C0A7 /* CZAppCoreCSVFile.hpp */,
 			);
 			path = CZAppCore;
 			sourceTree = "<group>";
@@ -178,6 +183,7 @@
 				8416354E1F5F662200C47136 /* CZAppCoreDataFile.cpp in Sources */,
 				841635691F5F6B1C00C47136 /* CZAppCoreHostProfile.cpp in Sources */,
 				841635601F5F690600C47136 /* CZAppCoreArgs.cpp in Sources */,
+				5A13B0F31F75D09500A3C0A7 /* CZAppCoreCSVFile.cpp in Sources */,
 				841635431F5F654600C47136 /* main.cpp in Sources */,
 				8416355A1F5F686E00C47136 /* CZAppCoreRAM.cpp in Sources */,
 				841635661F5F6ACF00C47136 /* CZAppCoreServer.cpp in Sources */,
@@ -311,6 +317,7 @@
 				841635481F5F654600C47136 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
