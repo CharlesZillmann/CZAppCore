@@ -23,38 +23,29 @@ class CSVFile {
     
 public:
     CSVFile() = default;
-    CSVFile(const std::string&, int theColumnHeadersRow, int theFirstDataRow);
+    CSVFile(const std::string&, int theColumnTitlesRow, int theFirstDataRow);
     
-    inline void headers();
-    inline std::vector<std::string> get_header();
+    inline std::vector<std::string> GetColumnTitles();
+    inline CSVVector GetDataRecords();
+    inline std::vector<std::string>::size_type GetDataRecordsSize();
     
-    inline std::vector<std::string>::size_type GetCSVDataSize();
-    inline CSVVector GetCSVData();
-    
-    CSVVector get_column(const int&);
-    CSVVector get_column(const std::vector<int>&);
-    CSVVector get_column(const std::string&);
-    CSVVector get_column(const std::vector<std::string>&);
+    CSVVector GetColumn(const int&);
+    CSVVector GetColumnsInGroup(const std::vector<int>&);
+    CSVVector GetNamedColumn(const std::string&);
+    CSVVector GetNamedColumnsInGroup(const std::vector<std::string>&);
     
     std::vector<std::string> GetRow(const int&);            //Return 1 Row
     CSVVector GetRowsInRange(const int&, const int&);       //Return All Rows in Range
     
 private:
-
-    std::vector<std::string> header;
-    CSVVector contents;
-    std::ifstream stream_read;
-    std::ofstream stream_write;
+    std::vector<std::string> ColumnTitles;
+    CSVVector DataRecords;
     
-    unsigned int GoToInputFileLine(unsigned int theLineNum);
-    std::vector<std::string> InputStringToRecord(const std::string& theInputString);
+    std::vector<std::string> StringToRecord(const std::string& theInputString);
+    std::string RecordToString(const std::vector<std::string>&);
     
-    inline std::string remove_file_extension(const std::string&);
-    std::vector<std::string> column_info(const std::string&);
-    std::string merge_row_vector(const std::vector<std::string>&);
-    long index_from_string(const std::string&);
-    std::map<long,std::string> index_from_string(const std::map<std::string,std::string>& row_map);
-    std::ostream& print(std::ostream&, const CSVFile&);
+    long GetNamedColumnIndex(const std::string&);
+    std::vector<std::string> GetNamedColumnVector(const std::string&);
 };
 
 #endif /* CZAppCoreCSVFile_hpp */
