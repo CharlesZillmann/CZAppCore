@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5A13B0F31F75D09500A3C0A7 /* CZAppCoreCSVFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A13B0F11F75D09500A3C0A7 /* CZAppCoreCSVFile.cpp */; };
+		5A13B0F61F76E7DD00A3C0A7 /* jinja2ish.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A13B0F41F76E7DD00A3C0A7 /* jinja2ish.cpp */; };
+		5A13B0F91F76E87300A3C0A7 /* CZAPPCoreString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A13B0F71F76E87300A3C0A7 /* CZAPPCoreString.cpp */; };
 		841635431F5F654600C47136 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 841635421F5F654600C47136 /* main.cpp */; };
 		8416354B1F5F65B600C47136 /* CZAppCoreIniFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 841635491F5F65B600C47136 /* CZAppCoreIniFile.cpp */; };
 		8416354E1F5F662200C47136 /* CZAppCoreDataFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8416354C1F5F662200C47136 /* CZAppCoreDataFile.cpp */; };
@@ -36,6 +38,10 @@
 /* Begin PBXFileReference section */
 		5A13B0F11F75D09500A3C0A7 /* CZAppCoreCSVFile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CZAppCoreCSVFile.cpp; sourceTree = "<group>"; };
 		5A13B0F21F75D09500A3C0A7 /* CZAppCoreCSVFile.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CZAppCoreCSVFile.hpp; sourceTree = "<group>"; };
+		5A13B0F41F76E7DD00A3C0A7 /* jinja2ish.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = jinja2ish.cpp; sourceTree = "<group>"; };
+		5A13B0F51F76E7DD00A3C0A7 /* jinja2ish.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = jinja2ish.hpp; sourceTree = "<group>"; };
+		5A13B0F71F76E87300A3C0A7 /* CZAPPCoreString.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CZAPPCoreString.cpp; sourceTree = "<group>"; };
+		5A13B0F81F76E87300A3C0A7 /* CZAPPCoreString.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CZAPPCoreString.hpp; sourceTree = "<group>"; };
 		8416353F1F5F654600C47136 /* CZAppCore */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CZAppCore; sourceTree = BUILT_PRODUCTS_DIR; };
 		841635421F5F654600C47136 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		841635491F5F65B600C47136 /* CZAppCoreIniFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CZAppCoreIniFile.cpp; sourceTree = "<group>"; };
@@ -113,6 +119,10 @@
 				8416356E1F5F73FE00C47136 /* CZAppCoreProcess.hpp */,
 				5A13B0F11F75D09500A3C0A7 /* CZAppCoreCSVFile.cpp */,
 				5A13B0F21F75D09500A3C0A7 /* CZAppCoreCSVFile.hpp */,
+				5A13B0F41F76E7DD00A3C0A7 /* jinja2ish.cpp */,
+				5A13B0F51F76E7DD00A3C0A7 /* jinja2ish.hpp */,
+				5A13B0F71F76E87300A3C0A7 /* CZAPPCoreString.cpp */,
+				5A13B0F81F76E87300A3C0A7 /* CZAPPCoreString.hpp */,
 			);
 			path = CZAppCore;
 			sourceTree = "<group>";
@@ -175,9 +185,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A13B0F91F76E87300A3C0A7 /* CZAPPCoreString.cpp in Sources */,
 				841635631F5F6A2E00C47136 /* CZAppCoreHybridRAMDiskServer.cpp in Sources */,
 				8416355D1F5F68A300C47136 /* CZAppCoreDisk.cpp in Sources */,
 				8416354B1F5F65B600C47136 /* CZAppCoreIniFile.cpp in Sources */,
+				5A13B0F61F76E7DD00A3C0A7 /* jinja2ish.cpp in Sources */,
 				8416356F1F5F73FE00C47136 /* CZAppCoreProcess.cpp in Sources */,
 				841635511F5F669900C47136 /* CZAppCoreStorage.cpp in Sources */,
 				8416354E1F5F662200C47136 /* CZAppCoreDataFile.cpp in Sources */,
