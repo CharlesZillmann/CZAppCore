@@ -7,9 +7,18 @@
 //
 
 #include <iostream>
+#include "CZAppCoreCSVFile.hpp"
 
 int main(int argc, const char * argv[]) {
     // insert code here...
+    CSVFile myCSVFile("/Users/zillmann/Documents/testdata.csv",1,2);
+    myCSVFile.DumpColumnTitles();
+    myCSVFile.DumpAllRows();
+    
+    CSVFile myCSV2File("/Users/zillmann/Documents/testdata2.csv",1,2);
+    myCSV2File.DumpColumnTitles();
+    myCSV2File.DumpAllRows();
+    
     std::cout << "Hello, World!\n";
     //AppCoreArgs           Construct (int argc, const char * argv[])
     //AppCoreError          Construct (Args)

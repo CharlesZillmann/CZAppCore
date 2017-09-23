@@ -55,7 +55,7 @@ std::vector<std::string> CSVFile::GetColumnTitles() {
     return ColumnTitles;
 }
 
-CSVFile::CSVVector CSVFile::GetDataRecords() {
+CSVVector CSVFile::GetDataRecords() {
     return DataRecords;
 }
 
@@ -118,8 +118,8 @@ std::vector<std::string> CSVFile::GetNamedColumnVector(const std::string& s) {
     return data;
 }
 
-CSVFile::CSVVector CSVFile::GetColumn(const int& index) {
-    CSVFile::CSVVector column_data;
+CSVVector CSVFile::GetColumn(const int& index) {
+CSVVector column_data;
     std::vector<std::string> buffer;
     
     for(unsigned i = 0; i < DataRecords.size(); ++i) {
@@ -129,8 +129,8 @@ CSVFile::CSVVector CSVFile::GetColumn(const int& index) {
     return column_data;
 }
 
-CSVFile::CSVVector CSVFile::GetColumnsInGroup(const std::vector<int>& indices) {
-    CSVFile::CSVVector column_data;
+CSVVector CSVFile::GetColumnsInGroup(const std::vector<int>& indices) {
+CSVVector column_data;
     for(auto&& index : indices)
     {
         std::vector<std::string> buffer;
@@ -143,14 +143,14 @@ CSVFile::CSVVector CSVFile::GetColumnsInGroup(const std::vector<int>& indices) {
     return column_data;
 }
 
-CSVFile::CSVVector CSVFile::GetNamedColumn(const std::string& s) {
-    CSVFile::CSVVector column_data;
+CSVVector CSVFile::GetNamedColumn(const std::string& s) {
+    CSVVector column_data;
     column_data.push_back(GetNamedColumnVector(s));
     return column_data;
 }
 
-CSVFile::CSVVector CSVFile::GetNamedColumnsInGroup(const std::vector<std::string>& col_vec) {
-    CSVFile::CSVVector column_data;
+CSVVector CSVFile::GetNamedColumnsInGroup(const std::vector<std::string>& col_vec) {
+    CSVVector column_data;
     for (auto&& column : col_vec) {
         column_data.push_back(GetNamedColumnVector(column));
     }
@@ -161,10 +161,33 @@ std::vector<std::string> CSVFile::GetRow(const int& i) {
     return DataRecords[i];
 }
 
-CSVFile::CSVVector CSVFile::GetRowsInRange(const int& start, const int& end) {
+CSVVector CSVFile::GetRowsInRange(const int& start, const int& end) {
     CSVVector row_range;
     for(unsigned i = start; i != end; ++i) {
         row_range.push_back(DataRecords[i]);
     }
     return row_range;
+}
+
+void CSVFile::DumpColumnTitles() {
+    std::cout << "T: ";
+    std::cout << RecordToString(ColumnTitles);
+    std::cout << "\n";
+    return;
+}
+
+void CSVFile::DumpAllRows() {
+    unsigned long myCount = DataRecords.size();
+    std::cout << "\n";
+    std::cout << "Number of Records: ";
+    std::cout << myCount;
+    std::cout << "\n";
+    
+//    for(unsigned long i = 0; i < DataRecords.size(); ++i) {
+//        std::cout << i;
+//        std::cout << ": ";
+//        std::cout << RecordToString(DataRecords[i]);
+//        std::cout << "\n";
+//    }
+    return;
 }
