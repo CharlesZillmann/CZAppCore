@@ -39,7 +39,7 @@ using namespace std;
 int DataFileSys::CLmain(int argc, char* argv[])    //Enter command line arguments to open a previously created file system
 // or leave blank to create a new one.
 {
-    char name[80], content[200], name1[80], keyword[60], *c = NULL;
+    char name[80], content[200], keyword[60], *c = NULL;
     cout<< "-----------------------------------------------------------------------------\n";
     cout<< "************************ Virtual File System *********************************\n";
     cout<< "-----------------------------------------------------------------------------\n";

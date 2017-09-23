@@ -14,7 +14,7 @@
 #include <array>
 
 //Constructor that open files and reads all data
-CSVFile::CSVFile(const std::string& file_name, int theColumnTitlesRow, int theFirstDataRow) {
+CSVFile::CSVFile(const std::string& file_name, int theColumnTitlesRow, int theFirstDataRow, char theEOL) {
     std::ifstream myInputFileStream;
     std::string myInputString;
     //Open the Input File
@@ -25,10 +25,10 @@ CSVFile::CSVFile(const std::string& file_name, int theColumnTitlesRow, int theFi
         //Advance
         myInputFileStream.seekg(std::ios::beg);
         for(int i=0; i < theColumnTitlesRow - 1; ++i){
-            myInputFileStream.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+            getline(myInputFileStream, myInputString, theEOL);
         }
         // Read the Column Header Row
-        if (getline(myInputFileStream, myInputString)){
+        if (getline(myInputFileStream, myInputString, theEOL)){
             ColumnTitles = StringToRecord(myInputString);
         }
 
@@ -36,12 +36,12 @@ CSVFile::CSVFile(const std::string& file_name, int theColumnTitlesRow, int theFi
         //Advance
         myInputFileStream.seekg(std::ios::beg);
         for(int i=0; i < theFirstDataRow - 1; ++i){
-            myInputFileStream.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+            getline(myInputFileStream, myInputString, theEOL);
         }
         // Read the Data Rows until EOF
         while (myInputFileStream) {
             // Grab a row of values from the CSV File
-            if (!getline(myInputFileStream, myInputString))
+            if (!getline(myInputFileStream, myInputString, theEOL))
                 break;
             DataRecords.push_back(StringToRecord(myInputString));
         }
@@ -55,7 +55,7 @@ std::vector<std::string> CSVFile::GetColumnTitles() {
     return ColumnTitles;
 }
 
-CSVVector CSVFile::GetDataRecords() {
+CSVFile::CSVVector CSVFile::GetDataRecords() {
     return DataRecords;
 }
 
@@ -118,7 +118,7 @@ std::vector<std::string> CSVFile::GetNamedColumnVector(const std::string& s) {
     return data;
 }
 
-CSVVector CSVFile::GetColumn(const int& index) {
+CSVFile::CSVVector CSVFile::GetColumn(const int& index) {
 CSVVector column_data;
     std::vector<std::string> buffer;
     
@@ -129,7 +129,7 @@ CSVVector column_data;
     return column_data;
 }
 
-CSVVector CSVFile::GetColumnsInGroup(const std::vector<int>& indices) {
+CSVFile::CSVVector CSVFile::GetColumnsInGroup(const std::vector<int>& indices) {
 CSVVector column_data;
     for(auto&& index : indices)
     {
@@ -143,13 +143,13 @@ CSVVector column_data;
     return column_data;
 }
 
-CSVVector CSVFile::GetNamedColumn(const std::string& s) {
+CSVFile::CSVVector CSVFile::GetNamedColumn(const std::string& s) {
     CSVVector column_data;
     column_data.push_back(GetNamedColumnVector(s));
     return column_data;
 }
 
-CSVVector CSVFile::GetNamedColumnsInGroup(const std::vector<std::string>& col_vec) {
+CSVFile::CSVVector CSVFile::GetNamedColumnsInGroup(const std::vector<std::string>& col_vec) {
     CSVVector column_data;
     for (auto&& column : col_vec) {
         column_data.push_back(GetNamedColumnVector(column));
@@ -161,12 +161,28 @@ std::vector<std::string> CSVFile::GetRow(const int& i) {
     return DataRecords[i];
 }
 
-CSVVector CSVFile::GetRowsInRange(const int& start, const int& end) {
+CSVFile::CSVVector CSVFile::GetRowsInRange(const int& start, const int& end) {
     CSVVector row_range;
     for(unsigned i = start; i != end; ++i) {
         row_range.push_back(DataRecords[i]);
     }
     return row_range;
+}
+
+long CSVFile::FindRowByValue(const std::string& theString,unsigned long theColumnNumber){
+    for(unsigned long i = 0; i < DataRecords.size(); ++i) {
+        if ((!DataRecords[i][theColumnNumber].empty()) and (DataRecords[i][theColumnNumber].compare(theString) == 0))
+            return i;
+    }
+    return -1;
+}
+
+std::string CSVFile::GetNeighborValue(const std::string& theString,unsigned long theColumnNumber, long theNeighbor){
+    for(unsigned long i = 0; i < DataRecords.size(); ++i) {
+        if ((!DataRecords[i][theColumnNumber].empty()) and (DataRecords[i][theColumnNumber].compare(theString) == 0))
+            return DataRecords[i][theColumnNumber+theNeighbor];
+    }
+    return "";
 }
 
 void CSVFile::DumpColumnTitles() {
@@ -183,11 +199,26 @@ void CSVFile::DumpAllRows() {
     std::cout << myCount;
     std::cout << "\n";
     
-//    for(unsigned long i = 0; i < DataRecords.size(); ++i) {
-//        std::cout << i;
-//        std::cout << ": ";
-//        std::cout << RecordToString(DataRecords[i]);
-//        std::cout << "\n";
-//    }
+    for(unsigned long i = 0; i < DataRecords.size(); ++i) {
+        std::cout << i;
+        std::cout << ": ";
+        std::cout << RecordToString(DataRecords[i]);
+        std::cout << "\n";
+    }
+    return;
+}
+
+void CSVFile::DumpColumn(unsigned long theColumnNumber) {
+    std::cout << "\n";
+    std::cout << "Column Number: ";
+    std::cout << theColumnNumber;
+    std::cout << "\n";
+    
+    for(unsigned long i = 0; i < DataRecords.size(); ++i) {
+        std::cout << i;
+        std::cout << ": ";
+        std::cout << DataRecords[i][theColumnNumber];
+        std::cout << "\n";
+    }
     return;
 }
