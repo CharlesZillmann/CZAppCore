@@ -13,46 +13,80 @@
 #include <iterator>
 #include <array>
 
-// file doc: http://www.cplusplus.com/doc/tutorial/files/
-// stream_readtream constructor: http://www.cplusplus.com/forum/general/17771/#msg89650
-CSVFile::CSVFile(const std::string& file_name) {
-    stream_read.open(file_name, std::ios::binary);
-    std::string out_file = remove_extension(file_name) + "_OUT.csv";
-    stream_write.open(out_file, std::ios::binary);
-    stream_write << stream_read.rdbuf(); // Copy read file into output file
-    bool line_is_header = true; // First line assumed to be the header
-    stream_read.seekg(0); // "Rewind" infile stream
-    while (stream_read) {
-        // Grab whole row
-        std::string s;
-        if (!getline(stream_read, s))
-            break;
-        
-        std::istringstream ss (s);
-        std::vector<std::string> record;
-        
-        while(ss) {
-            // Split string by comma delimiter
-            std::string s;
-            if (!getline(ss, s, ','))
-                break;
-            record.push_back(s);
+std::vector<std::string>::size_type CSVFile::GetCSVDataSize() {
+    return contents.size();
+}
+std::vector<std::string> CSVFile::get_header() {
+    return header;
+}
+
+std::string CSVFile::remove_file_extension(const std::string& s) {
+    std::string ret = s;
+    ret.erase(ret.find_last_of("."), std::string::npos);
+    return ret;
+}
+
+CSVFile::CSVVector CSVFile::GetCSVData() {
+    return contents;
+}
+
+unsigned int CSVFile::GoToInputFileLine( unsigned int theLineNum ){
+    stream_read.seekg(std::ios::beg);
+    for(int i=0; i < theLineNum - 1; ++i){
+        stream_read.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+    }
+    return theLineNum;
+}
+
+std::vector<std::string> CSVFile::InputStringToRecord(const std::string& theInputString) {
+    
+    std::istringstream myInputStringStream( theInputString );
+    std::vector<std::string> myInputRecord;
+
+    while(myInputStringStream) {
+        // Split string by comma delimiter
+        std::string myLocalString;
+        if (getline(myInputStringStream, myLocalString, ',')){
+            myInputRecord.push_back(myLocalString);
         }
-        
-        if (line_is_header)
-            header = record;
-        else
-            contents.push_back(record);
-        line_is_header = false; // First iteration clears through the header
+    }
+    return myInputRecord;
+}
+
+CSVFile::CSVFile(const std::string& file_name, int theColumnHeadersRow, int theFirstDataRow) {
+    
+    std::string myInputString;
+    
+    //Open the Input File
+    stream_read.open(file_name, std::ios::binary);
+    
+    //Advance to the Column Header Row
+    GoToInputFileLine( theColumnHeadersRow );
+    if (stream_read) {
+        // Read the Column Header Row
+        if (getline(stream_read, myInputString)){
+            header = InputStringToRecord(myInputString);
+        }
+    }
+    
+    GoToInputFileLine( theFirstDataRow );
+    while (stream_read) {
+        // Grab a row of values from the CSV File
+        if (!getline(stream_read, myInputString))
+            break;
+        contents.push_back(InputStringToRecord(myInputString));
     }
 }
 
 void CSVFile::write_row(const std::map<std::string,std::string>& row_map) {
+    
     std::vector<std::string> row_vec(header.size(), "NULL");
     std::map<long,std::string> index_map = index_from_string(row_map);
+    
     for(auto it = index_map.begin(); it != index_map.end(); ++it) {
         row_vec[it->first] = it->second;
     }
+    
     // for(auto&& i : row_vec) { cout << i << endl; }
     
     std::string v_string = merge_row_vector(row_vec);
@@ -76,7 +110,6 @@ long CSVFile::index_from_string(const std::string& s) {
     return pos;
 }
 
-// http://stackoverflow.com/questions/1430757/c-vector-to-string
 std::string CSVFile::merge_row_vector(const std::vector<std::string>& row_vec) {
     std::stringstream sstream;
     for(std::vector<std::string>::size_type ctr = 0; ctr < row_vec.size(); ++ctr) {
@@ -107,8 +140,8 @@ std::vector<std::string> CSVFile::column_info(const std::string& s) {
     return data;
 }
 
-CSVFile::CsvVector CSVFile::get_column(const int& index) {
-    CSVFile::CsvVector column_data;
+CSVFile::CSVVector CSVFile::get_column(const int& index) {
+    CSVFile::CSVVector column_data;
     std::vector<std::string> buffer;
     
     for(unsigned i = 0; i < contents.size(); ++i) {
@@ -118,8 +151,8 @@ CSVFile::CsvVector CSVFile::get_column(const int& index) {
     return column_data;
 }
 
-CSVFile::CsvVector CSVFile::get_column(const std::vector<int>& indices) {
-    CSVFile::CsvVector column_data;
+CSVFile::CSVVector CSVFile::get_column(const std::vector<int>& indices) {
+    CSVFile::CSVVector column_data;
     for(auto&& index : indices)
     {
         std::vector<std::string> buffer;
@@ -132,33 +165,33 @@ CSVFile::CsvVector CSVFile::get_column(const std::vector<int>& indices) {
     return column_data;
 }
 
-CSVFile::CsvVector CSVFile::get_column(const std::string& s) {
-    CSVFile::CsvVector column_data;
+CSVFile::CSVVector CSVFile::get_column(const std::string& s) {
+    CSVFile::CSVVector column_data;
     column_data.push_back(column_info(s));
     return column_data;
 }
 
-CSVFile::CsvVector CSVFile::get_column(const std::vector<std::string>& col_vec) {
-    CSVFile::CsvVector column_data;
+CSVFile::CSVVector CSVFile::get_column(const std::vector<std::string>& col_vec) {
+    CSVFile::CSVVector column_data;
     for (auto&& column : col_vec) {
         column_data.push_back(column_info(column));
     }
     return column_data;
 }
 
-std::vector<std::string> CSVFile::get_row(const int& i) {
+std::vector<std::string> CSVFile::GetRow(const int& i) {
     return contents[i];
 }
 
-CSVFile::CsvVector CSVFile::get_row(const int& start, const int& end) {
-    CsvVector row_range;
+CSVFile::CSVVector CSVFile::GetRowsInRange(const int& start, const int& end) {
+    CSVVector row_range;
     for(unsigned i = start; i != end; ++i) {
         row_range.push_back(contents[i]);
     }
     return row_range;
 }
 
-std::ostream& print(std::ostream& os, const CSVFile& csv) {
+std::ostream& CSVFile::print(std::ostream& os, const CSVFile& csv) {
     std::string csv_string;
     for (auto&& i : csv.contents) {
         std::stringstream s;
