@@ -13,9 +13,9 @@
 #include <vector>
 #include <sstream>
 
-#include "stringhelper.h"
+#include "CZAPPCoreString.hpp"
 
-#include "Jinja2CppLight.h"
+#include "jinja2ish.hpp"
 
 using namespace std;
 

@@ -19,7 +19,6 @@
 #include <sstream>
 using namespace std;
 
-#include "stringhelper.h"
 
 vector<string> split(const string &str, const string &separator ) {
     vector<string> splitstring;
@@ -65,7 +64,7 @@ string replace( string targetString, string oldValue, string newValue ) {
     return targetString.replace( pos, oldValue.length(), newValue );
 }
 string replaceGlobal( string targetString, string oldValue, string newValue ) {
-    int pos = 0;
+    unsigned long pos = 0;
     string resultString = "";
     size_t targetPos = targetString.find( oldValue, pos );
     while( targetPos != string::npos ) {

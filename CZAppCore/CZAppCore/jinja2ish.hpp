@@ -16,7 +16,7 @@
 #include <vector>
 #include <stdexcept>
 #include <sstream>
-
+#include "CZAPPCoreString.hpp"
 #define VIRTUAL virtual
 #define STATIC static
 
