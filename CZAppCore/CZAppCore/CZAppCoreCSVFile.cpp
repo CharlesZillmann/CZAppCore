@@ -12,6 +12,7 @@
 #include <algorithm>
 #include <iterator>
 #include <array>
+#include <string.h>
 
 //Constructor that open files and reads all data
 CSVFile::CSVFile(const std::string& file_name, int theColumnTitlesRow, int theFirstDataRow, char theEOL) {
@@ -167,6 +168,29 @@ CSVFile::CSVVector CSVFile::GetRowsInRange(const int& start, const int& end) {
         row_range.push_back(DataRecords[i]);
     }
     return row_range;
+}
+
+long CSVFile::RemoveBlankRows(){
+    long myRowsRemoved = 0;
+//    for(long myRows = 0; myRows < DataRecords.size(); ++myRows)
+//    {
+//        std::string myRowString;
+//        for(long myColumn = 0; myColumn < ColumnTitles.size()-1; ++myColumn) {
+//            myRowString.append(trim(DataRecords[myRows][myColumn]));
+//        }
+//
+//        if (myRowString.compare("") == 0) {
+//            DataRecords.erase(DataRecords.begin()+myRows);
+//        }
+//    }
+//    DataRecords.erase(
+//                         std::remove_if(DataRecords.begin(), DataRecords.end(), [](const auto& row) {
+//        for(const auto& col : row){
+//            if(col == "NULL") { return true; }
+//        }
+//        return false;
+//    }), DataRecords.end());
+    return myRowsRemoved;
 }
 
 long CSVFile::FindRowByValue(const std::string& theString,unsigned long theColumnNumber){
